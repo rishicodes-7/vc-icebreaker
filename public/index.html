@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VC Icebreaker — Break the silence</title>
+  <meta name="description" content="The multiplayer icebreaker game for friend groups. Pick a category, answer questions, vote for the best answers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#ff4b4b" />
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Icebreaker" />
+</head>
+<body>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ========================================================
+       SCREEN 1 — LOBBY (landing page + modals)
+  ======================================================== -->
+  <div id="lobbyScreen" class="screen">
+
+    <!-- LANDING PAGE -->
+    <div id="lobbyHome">
+
+      <!-- NAV -->
+      <nav class="nav">
+        <div class="nav-logo">🎯 VC Icebreaker</div>
+        <div class="nav-actions">
+          <button class="btn-ghost" id="navJoinBtn">Join Room</button>
+          <button class="btn-primary" id="navHostBtn">Host Game</button>
+        </div>
+      </nav>
+
+      <!-- HERO -->
+      <section class="hero">
+
+        <!-- Floating background cards -->
+        <div class="hero-bg" aria-hidden="true">
+          <div class="float-card fc-1">😂 What's your most useless talent?</div>
+          <div class="float-card fc-2">🔥 Who here would survive a zombie apocalypse?</div>
+          <div class="float-card fc-3">🧠 What belief have you completely changed?</div>
+          <div class="float-card fc-4">🎨 If your life was a movie genre, what would it be?</div>
+          <div class="float-card fc-5">🌙 What's your ideal Sunday morning?</div>
+          <div class="float-card fc-6">💼 What's your worst work story?</div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-badge">✨ No accounts. No downloads.</div>
+          <h1 class="hero-title">
+            Break the<br />
+            <span class="hero-title-accent">silence.</span>
+          </h1>
+          <p class="hero-subtitle">
+            The multiplayer icebreaker game for friend groups.<br />
+            Pick a vibe, answer questions, vote for the best.
+          </p>
+          <div class="hero-ctas">
+            <button class="cta-host" id="goHostBtn">
+              <span class="cta-icon">🎮</span>
+              <span>
+                <strong>Host a Game</strong>
+                <small>Create a room &amp; invite friends</small>
+              </span>
+            </button>
+            <button class="cta-join" id="goJoinBtn">
+              <span class="cta-icon">🚀</span>
+              <span>
+                <strong>Join a Room</strong>
+                <small>Enter a room code</small>
+              </span>
+            </button>
+          </div>
+          <p class="hero-note">Free forever · Works on any device · Up to 20 players</p>
+        </div>
+
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="how-section">
+        <h2 class="section-title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-icon">🏠</div>
+            <h3>Host creates a room</h3>
+            <p>One person creates a room and shares the code with friends.</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-icon">🎲</div>
+            <h3>Pick a category</h3>
+            <p>Choose from 20+ categories — chill, spicy, deep, funny and more.</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-icon">🗳️</div>
+            <h3>Answer &amp; vote</h3>
+            <p>Questions appear live for everyone. Vote for the best answer.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="categories-section">
+        <h2 class="section-title">Pick your vibe</h2>
+        <div class="categories-grid">
+          <div class="cat-card cat-chill">🌙<span>Chill</span></div>
+          <div class="cat-card cat-funny">😂<span>Funny</span></div>
+          <div class="cat-card cat-spicy">🔥<span>Spicy</span></div>
+          <div class="cat-card cat-deep">🧠<span>Deep</span></div>
+          <div class="cat-card cat-chaos">😈<span>Chaos</span></div>
+          <div class="cat-card cat-work">💼<span>Work</span></div>
+          <div class="cat-card cat-nostalgia">📼<span>Nostalgia</span></div>
+          <div class="cat-card cat-creative">🎨<span>Creative</span></div>
+          <div class="cat-card cat-gaming">🎮<span>Gaming</span></div>
+          <div class="cat-card cat-travel">✈️<span>Travel</span></div>
+          <div class="cat-card cat-music">🎵<span>Music</span></div>
+          <div class="cat-card cat-romance">💕<span>Romance</span></div>
+          <div class="cat-card cat-mystery">🔮<span>Mystery</span></div>
+          <div class="cat-card cat-tech">💻<span>Tech</span></div>
+          <div class="cat-card cat-party">🎉<span>Party Mix</span></div>
+          <div class="cat-card cat-soulful">😭<span>Soulful</span></div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-logo">🎯 VC Icebreaker</div>
+        <p>Made for friend groups who actually want to talk.</p>
+        <div class="footer-links">
+          <a href="https://github.com/rishiiiicodes/vc-icebreaker" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </footer>
+
+    </div><!-- /lobbyHome -->
+
+    <!-- ======= HOST MODAL ======= -->
+    <div id="lobbyHost" class="modal-overlay hidden">
+      <div class="modal-box">
+        <button class="modal-close" id="backToHomeHost">✕</button>
+        <div class="modal-header">
+          <div class="modal-icon">🎮</div>
+          <h2>Host a Game</h2>
+          <p>Share the code with your friends to invite them.</p>
+        </div>
+        <div class="modal-body">
+          <label class="field-label">Your name</label>
+          <input type="text" id="nameInputHost" class="field-input" placeholder="Enter your name" maxlength="20" autocomplete="off" />
+
+          <label class="field-label">Room code</label>
+          <div class="room-code-row">
+            <div class="room-code-display" id="hostRoomCode">LOADING</div>
+            <button class="btn-regen" id="regenerateBtn" title="Generate new code">🔄</button>
+          </div>
+
+          <button class="btn-primary btn-full" id="createBtn">Create Room →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= JOIN MODAL ======= -->
+    <div id="lobbyJoin" class="modal-overlay hidden">
+      <div class="modal-box">
+        <button class="modal-close" id="backToHomeJoin">✕</button>
+        <div class="modal-header">
+          <div class="modal-icon">🚀</div>
+          <h2>Join a Room</h2>
+          <p>Ask your host for the room code.</p>
+        </div>
+        <div class="modal-body">
+          <label class="field-label">Your name</label>
+          <input type="text" id="nameInputJoin" class="field-input" placeholder="Enter your name" maxlength="20" autocomplete="off" />
+
+          <label class="field-label">Room code</label>
+          <input type="text" id="roomInput" class="field-input field-code" placeholder="e.g. EPICTEAM42" maxlength="20" autocomplete="off" />
+
+          <button class="btn-primary btn-full" id="joinBtn">Join Room →</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /lobbyScreen -->
+
+
+  <!-- ========================================================
+       SCREEN 2 — CATEGORY SELECTION
+  ======================================================== -->
+  <div id="categorySelectScreen" class="screen hidden">
+
+    <!-- HOST VIEW -->
+    <div id="hostCategoryView">
+      <div class="select-header">
+        <div class="select-header-left">
+          <h2>Choose a Category</h2>
+          <p id="playerCountText">Waiting for players...</p>
+        </div>
+        <div class="select-header-right">
+          <div class="invite-box">
+            <span>Room code</span>
+            <strong id="categoryRoomCode">—</strong>
+          </div>
+          <button class="btn-primary" id="startGameBtn" disabled>Start Game →</button>
+        </div>
+      </div>
+
+      <div class="category-grid-select">
+        <div class="category-card-select" data-category="chill">🌙<span>Chill</span></div>
+        <div class="category-card-select" data-category="funny">😂<span>Funny</span></div>
+        <div class="category-card-select" data-category="spicy">🔥<span>Spicy</span></div>
+        <div class="category-card-select" data-category="deep">🧠<span>Deep</span></div>
+        <div class="category-card-select" data-category="chaos">😈<span>Chaos</span></div>
+        <div class="category-card-select" data-category="work">💼<span>Work</span></div>
+        <div class="category-card-select" data-category="nostalgia">📼<span>Nostalgia</span></div>
+        <div class="category-card-select" data-category="creative">🎨<span>Creative</span></div>
+        <div class="category-card-select" data-category="gaming">🎮<span>Gaming</span></div>
+        <div class="category-card-select" data-category="travel">✈️<span>Travel</span></div>
+        <div class="category-card-select" data-category="music">🎵<span>Music</span></div>
+        <div class="category-card-select" data-category="food">🍕<span>Food</span></div>
+        <div class="category-card-select" data-category="romance">💕<span>Romance</span></div>
+        <div class="category-card-select" data-category="journey">🛤️<span>Life Journey</span></div>
+        <div class="category-card-select" data-category="mystery">🔮<span>Mystery</span></div>
+        <div class="category-card-select" data-category="tech">💻<span>Tech</span></div>
+        <div class="category-card-select" data-category="party">🎉<span>Party Mix</span></div>
+        <div class="category-card-select" data-category="soulful">😭<span>Soulful</span></div>
+        <div class="category-card-select" data-category="dares">🎯<span>Dares</span></div>
+        <div class="category-card-select" data-category="all">🎲<span>All</span></div>
+      </div>
+    </div>
+
+    <!-- PLAYER WAITING VIEW -->
+    <div id="playerWaitingView" class="hidden">
+      <div class="waiting-container">
+        <div class="waiting-spinner"></div>
+        <h2>You're in!</h2>
+        <p>Waiting for the host to pick a category...</p>
+        <div id="categoryPreview" class="category-preview hidden">
+          <p>Host picked</p>
+          <div class="preview-cat">
+            <span id="chosenCategoryEmoji">🎲</span>
+            <strong id="chosenCategoryName">—</strong>
+          </div>
+        </div>
+        <div id="waitingPlayersList" class="waiting-players"></div>
+      </div>
+    </div>
+
+  </div><!-- /categorySelectScreen -->
+
+
+  <!-- ========================================================
+       SCREEN 3 — GAME
+  ======================================================== -->
+  <div id="gameScreen" class="screen hidden">
+
+    <!-- TOP BAR -->
+    <div class="game-topbar">
+      <div class="topbar-left">
+        <span class="topbar-logo">🎯</span>
+        <span id="roomStatus" class="topbar-room">—</span>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-btn" id="playersToggle">👥 Players</button>
+        <button class="topbar-btn" id="inlineShareBtn">🔗 Share</button>
+        <button class="topbar-btn topbar-leave" id="leaveBtn">Leave</button>
+      </div>
+    </div>
+
+    <!-- PLAYER LIST (dropdown) -->
+    <div id="playerList" class="player-list hidden"></div>
+
+    <!-- HOST CONTROLS -->
+    <div id="hostControlsPanel" class="host-panel hidden">
+      <button class="host-panel-toggle" id="hostControlsToggle">
+        <span>🎮 Host Controls</span>
+        <span id="hostToggleIcon">▾</span>
+      </button>
+      <div id="hostControlsContent" class="host-panel-body">
+        <div class="host-controls-row">
+          <button class="ctrl-btn" id="nextBtn">⏭ Next</button>
+            <button class="ctrl-btn" id="prevBtn">⏮ Prev</button>
+          <button class="ctrl-btn ctrl-skip" id="skipBtn">⏩ Skip</button>
+          <button class="ctrl-btn ctrl-reset" id="resetBtn">🔄 Reset</button>
+          <button class="ctrl-btn ctrl-lock" id="lockRoomBtn">🔒 Lock</button>
+        </div>
+   
+  <!-- GAME AREA -->
+    <div class="game-area">
+
+      <!-- PROGRESS -->
+      <div class="progress-bar-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0 / 0</span>
+      </div>
+
+      <!-- TIMER RING -->
+      <div id="timerRing" class="timer-ring hidden">
+        <svg viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="26" class="timer-track" />
+          <circle cx="30" cy="30" r="26" class="timer-fill" id="timerRingFill" />
+        </svg>
+        <span id="timerCount" class="timer-count">60</span>
+      </div>
+
+      <!-- QUESTION CARD -->
+      <div id="questionCard" class="question-card">
+        <div id="turnBadge" class="turn-badge hidden"></div>
+        <p id="question" class="question-text">Press Next to begin.</p>
+        <button class="copy-btn" id="copyQuestionBtn" title="Copy question">📋</button>
+      </div>
+
+      <!-- REACTION BAR -->
+      <div id="reactionBar" class="reaction-bar hidden">
+        <button class="reaction-btn" data-emoji="😂">😂</button>
+        <button class="reaction-btn" data-emoji="🔥">🔥</button>
+        <button class="reaction-btn" data-emoji="😮">😮</button>
+        <button class="reaction-btn" data-emoji="👏">👏</button>
+        <button class="reaction-btn" data-emoji="💀">💀</button>
+        <button class="reaction-btn" data-emoji="❤️">❤️</button>
+      </div>
+
+      <!-- REACTION STAGE (floating emojis) -->
+      <div id="reactionStage" class="reaction-stage" aria-hidden="true"></div>
+
+
+      <!-- DONE OVERLAY -->
+      <div id="doneOverlay" class="done-overlay hidden">
+        <div class="done-box">
+          <div class="done-emoji">🎉</div>
+          <h2>That's a wrap!</h2>
+          <p>All questions done. Here are your final standings.</p>
+          <div id="leaderboardList" class="leaderboard-list"></div>
+          <button class="btn-primary" id="playAgainBtn" style="display:none">🔄 Play Again</button>
+        </div>
+      </div>
+
+    </div><!-- /game-area -->
+  </div><!-- /gameScreen -->
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
